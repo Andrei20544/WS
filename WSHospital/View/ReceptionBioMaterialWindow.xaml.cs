@@ -59,6 +59,7 @@ namespace WSHospital.View
 
             using(ModelDB md = new ModelDB())
             {
+                Users users = new Users();
                 var fio = from f in md.Patients
                           select new
                           {

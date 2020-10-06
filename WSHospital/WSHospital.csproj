@@ -65,17 +65,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Company.cs" />
-    <Compile Include="LabServices.cs" />
-    <Compile Include="ModelDB.cs" />
-    <Compile Include="NumberAnalyze.cs" />
-    <Compile Include="Orderr.cs" />
-    <Compile Include="Patients.cs" />
-    <Compile Include="Rendering.cs" />
-    <Compile Include="Rolee.cs" />
-    <Compile Include="SetService.cs" />
-    <Compile Include="sysdiagrams.cs" />
-    <Compile Include="Users.cs" />
+    <Compile Include="Model\Company.cs" />
+    <Compile Include="Model\LabServices.cs" />
+    <Compile Include="Model\ModelDB.cs" />
+    <Compile Include="Model\NumberAnalyze.cs" />
+    <Compile Include="Model\Orderr.cs" />
+    <Compile Include="Model\Patients.cs" />
+    <Compile Include="Model\Rendering.cs" />
+    <Compile Include="Model\Rolee.cs" />
+    <Compile Include="Model\SetService.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="Model\Users.cs" />
     <Compile Include="View\ReceptionBioMaterialWindow.xaml.cs">
       <DependentUpon>ReceptionBioMaterialWindow.xaml</DependentUpon>
     </Compile>
@@ -131,7 +131,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
