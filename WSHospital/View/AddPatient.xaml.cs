@@ -22,6 +22,21 @@ namespace WSHospital.View
         public AddPatient()
         {
             InitializeComponent();
+            using (ModelDB md = new ModelDB())
+            {
+                var comp = from c in md.Company
+                           select new
+                           {
+                               NameComp = c.Name,
+                               IdComp = c.ID
+                           };
+
+                foreach(var item in comp)
+                {
+                    CompName.Items.Add(item.IdComp.ToString() + ". "+ item.NameComp.ToString());
+                }
+            }
+
         }
 
         public Patients pat;
@@ -41,17 +56,20 @@ namespace WSHospital.View
                         Phone = int.Parse(pPhone.Text),
                         InsurancePolicy = int.Parse(pInsPolicy.Text),
                         TypeOfPolicy = pTypePolicy.Text,
-                        IDCompany = 4
+                        IDCompany = int.Parse(CompName.SelectedItem.ToString().Split('.')[0])
                     };
 
                     md.Patients.Add(pat);
                     md.SaveChanges();
 
                     MessageBox.Show("Данные успешно созранены в БД");
+
+                    //ReceptionBioMaterialWindow RBMW = new ReceptionBioMaterialWindow();
+                    //RBMW.SetComboFio();
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Что-то пошло не так!");
+                    MessageBox.Show(ex.Message);
                 }
 
             }

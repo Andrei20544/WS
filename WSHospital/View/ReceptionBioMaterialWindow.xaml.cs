@@ -32,19 +32,26 @@ namespace WSHospital.View
             SetComboFio();
         }
 
+        public ReceptionBioMaterialWindow()
+        {
+
+        }
+
         public void SetComboFio()
         {
+            ComboFIO.Items.Clear();
             using (ModelDB md = new ModelDB())
             {
                 Users users = new Users();
                 var fio = from f in md.Patients
                           select new
                           {
+                              ID = f.ID,
                               FIO = f.FIO
                           };
                 foreach (var fi in fio)
                 {
-                    ComboFIO.Items.Add(fi.FIO);
+                    ComboFIO.Items.Add(fi.ID + " ." + fi.FIO);
                 }
             }
         }
@@ -53,9 +60,11 @@ namespace WSHospital.View
         {
             using(ModelDB md = new ModelDB())
             {
-                var pat = md.Patients.FirstOrDefault(p => p.FIO.Contains(ComboFIO.SelectedItem.ToString()));
+                string comboFi = ComboFIO.SelectedItem.ToString().Split('.')[1];
 
-                if (ComboFIO.SelectedItem.ToString() == pat.FIO)
+                var pat = md.Patients.FirstOrDefault(p => p.FIO.Contains(comboFi));
+
+                if (ComboFIO.SelectedItem.ToString().Split('.')[1] == pat.FIO)
                 {
                     PFIO.Text = pat.FIO;
                     DateOfBirth.Text = pat.DateOfBirth.ToString();
@@ -67,6 +76,7 @@ namespace WSHospital.View
         }
 
         public LabServices Serv; 
+        public NumberAnalyze numAn;
         private void Button_Click(object sender, RoutedEventArgs e)
         {         
 
@@ -86,12 +96,23 @@ namespace WSHospital.View
                     md.LabServices.Add(Serv);
                     md.SaveChanges();
 
+                    numAn = new NumberAnalyze
+                    {
+                        IDPatient = int.Parse(ComboFIO.SelectedItem.ToString().Split('.')[0]),
+                        IDService = Serv.ID
+                    };
+
+                    md.NumberAnalyze.Add(numAn);
+                    md.SaveChanges();
+
                     MessageBox.Show("Данные успешно созранены в БД");
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show("Что-то пошло не так!");
                 }
+
+
 
             }
         }
@@ -100,9 +121,6 @@ namespace WSHospital.View
         {
             AddPatient addPatient = new AddPatient();
             addPatient.Show();
-
-            ComboFIO.Items.Clear();
-            SetComboFio();
         }
     }
 }
