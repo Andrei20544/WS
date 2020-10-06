@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WSHospital.View"
         mc:Ignorable="d"
-        Title="ReceptionBioMaterialWindow" Height="720" Width="1280">
+        Title="ReceptionBioMaterialWindow" Height="720" Width="1280" MaxHeight="1080" MaxWidth="1920" MinHeight="720" MinWidth="1280">
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="41*"></ColumnDefinition>
@@ -31,6 +31,8 @@
                 <Label FontSize="25" HorizontalAlignment="Center">Patient data</Label>
                 <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PFIO" FontSize="17"></TextBlock>
                 <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="DateOfBirth" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PEMAIL" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PPassportData" FontSize="17"></TextBlock>
             </StackPanel>
         </Border>
 
@@ -45,12 +47,32 @@
 
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label FontSize="19" Width="160">FIO</Label>
-                    <ComboBox Name="ComboFIO" Width="220" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+                    <ComboBox Name="ComboFIO" Width="220" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="ComboFIO_SelectionChanged"></ComboBox>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label FontSize="19" Width="160">ServiceName</Label>
                     <TextBox Width="220" TextAlignment="Center" Name="ServiceName"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label FontSize="19" Width="160">Cost</Label>
+                    <TextBox Width="220" TextAlignment="Center" Name="CostServ"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label FontSize="19" Width="160">Period</Label>
+                    <TextBox Width="220" TextAlignment="Center" Name="PeriodServ"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label FontSize="19" Width="160">Mean deviation</Label>
+                    <TextBox Width="220" TextAlignment="Center" Name="MeanDeviationServ"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5 50 5 5" HorizontalAlignment="Center">
+                    <Button Width="150" Height="35" Margin="5 5 28 5" FontSize="15" Click="Button_Click">Сформировать заказ</Button>
+                    <Button Width="150" Height="35" Margin="28 5 5 5" FontSize="15" Click="Button_Click_1">Добавить пациента</Button>
                 </StackPanel>
 
             </StackPanel>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WSHospital.NewModel;
 
 namespace WSHospital.View
 {
@@ -25,37 +26,7 @@ namespace WSHospital.View
 
             UName.Text = u.FirstName;
             ULName.Text = u.LastName;
-            UAge.Text = age.ToString();
-
-            //if (BCode.Text == "")
-            //{
-            //    MessageBox.Show("Поле для ввода не может быть пустым");
-            //}
-            //else
-            //{
-            //    using (Model md = new Model())
-            //    {
-            //        try
-            //        {
-            //            var Code = md.LabServices.FirstOrDefault(p => p.ServiceCode.Equals(BCode.Text));
-
-            //            if (Code != null)
-            //            {
-            //                var BioCode = md.LabServices.Where(p => p.ServiceCode.Equals(BCode.Text)).FirstOrDefault();
-                            
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("Неправильный код. Или же такого кода не существует вовсе!");
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show(ex.Message);
-            //        }
-
-            //    }
-            //}
+            UAge.Text = age.ToString();          
 
             using(ModelDB md = new ModelDB())
             {
@@ -73,5 +44,32 @@ namespace WSHospital.View
 
         }
 
+        private void ComboFIO_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using(ModelDB md = new ModelDB())
+            {
+                var pat = md.Patients.FirstOrDefault(p => p.FIO.Contains(ComboFIO.SelectedItem.ToString()));
+
+                if (ComboFIO.SelectedItem.ToString() == pat.FIO)
+                {
+                    PFIO.Text = pat.FIO;
+                    DateOfBirth.Text = pat.DateOfBirth.ToString();
+                    PPassportData.Text = pat.PassportData;
+                    PEMAIL.Text = pat.Email;
+                }
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddPatient addPatient = new AddPatient();
+            addPatient.Show();
+        }
     }
 }
