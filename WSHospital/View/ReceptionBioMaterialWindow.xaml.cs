@@ -57,32 +57,20 @@ namespace WSHospital.View
             //    }
             //}
 
-        }
-
-        private void BioCode_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-            try
+            using(ModelDB md = new ModelDB())
             {
-                using (ModelDB md = new ModelDB())
+                var fio = from f in md.Patients
+                          select new
+                          {
+                              FIO = f.FIO
+                          };
+                foreach(var fi in fio)
                 {
-                    //var BioC = md.LabServices.FirstOrDefault(p => p.ServiceCode.Equals(BioCode.Text));
-                    var service = md.LabServices.ToList();
-
-                    foreach(var item in service)
-                    {
-                        if (item.ServiceCode.ToString().Equals(BioCode.Text))
-                        {
-                            LabServices LS = md.LabServices.Where(p => p.ServiceCode.Equals(BioCode.Text)).FirstOrDefault();
-                            SName.Text = LS.Name;
-                        }
-                    }               
+                    ComboFIO.Items.Add(fi.FIO);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                SName.Text = "";
-            }
+
         }
+
     }
 }
