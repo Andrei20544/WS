@@ -21,37 +21,37 @@
             
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">FIO</Label>
-                <TextBox Width="250" Name="FIO"></TextBox>
+                <TextBox Width="250" Name="pFIO"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">DateOfBirth</Label>
-                <TextBox Width="250" Name="DateOfBirth"></TextBox>
+                <TextBox Width="250" Name="pDateOfBirth"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">Email</Label>
-                <TextBox Width="250" Name="Email"></TextBox>
+                <TextBox Width="250" Name="pEmail"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">PassportData</Label>
-                <TextBox Width="250" Name="PassportData"></TextBox>
+                <TextBox Width="250" Name="pPassportData"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">Phone</Label>
-                <TextBox Width="250" Name="Phone"></TextBox>
+                <TextBox Width="250" Name="pPhone"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">InsPolicy</Label>
-                <TextBox Width="250" Name="InsPolicy"></TextBox>
+                <TextBox Width="250" Name="pInsPolicy"></TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Width="120">TypePolicy</Label>
-                <TextBox Width="250" Name="TypePolicy"></TextBox>
+                <TextBox Width="250" Name="pTypePolicy"></TextBox>
             </StackPanel>
 
             <Rectangle Height="5" Fill="#FFBFBFBF"></Rectangle>

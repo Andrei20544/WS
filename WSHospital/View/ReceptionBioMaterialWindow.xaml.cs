@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WSHospital.NewModel;
 
 namespace WSHospital.View
 {
@@ -20,15 +19,22 @@ namespace WSHospital.View
     /// </summary>
     public partial class ReceptionBioMaterialWindow : Window
     {
-        public ReceptionBioMaterialWindow(Users u, int age)
+        public ReceptionBioMaterialWindow(Users u, int age, BitmapImage ph)
         {
             InitializeComponent();
 
             UName.Text = u.FirstName;
             ULName.Text = u.LastName;
-            UAge.Text = age.ToString();          
+            UAge.Text = age.ToString();
 
-            using(ModelDB md = new ModelDB())
+            Phot.Source = ph;
+
+            SetComboFio();
+        }
+
+        public void SetComboFio()
+        {
+            using (ModelDB md = new ModelDB())
             {
                 Users users = new Users();
                 var fio = from f in md.Patients
@@ -36,12 +42,11 @@ namespace WSHospital.View
                           {
                               FIO = f.FIO
                           };
-                foreach(var fi in fio)
+                foreach (var fi in fio)
                 {
                     ComboFIO.Items.Add(fi.FIO);
                 }
             }
-
         }
 
         private void ComboFIO_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,15 +66,43 @@ namespace WSHospital.View
             }
         }
 
+        public LabServices Serv; 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
+        {         
+
+            using (ModelDB md = new ModelDB())
+            {
+                try
+                {
+                    Serv = new LabServices
+                    {
+                        Name = ServiceName.Text,
+                        Cost = int.Parse(CostServ.Text),
+                        ServiceCode = long.Parse(BioCode.Text),
+                        Period = DateTime.Parse(PeriodServ.Text),
+                        MeanDeviation = MeanDeviationServ.Text
+                    };
+
+                    md.LabServices.Add(Serv);
+                    md.SaveChanges();
+
+                    MessageBox.Show("Данные успешно созранены в БД");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Что-то пошло не так!");
+                }
+
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             AddPatient addPatient = new AddPatient();
             addPatient.Show();
+
+            ComboFIO.Items.Clear();
+            SetComboFio();
         }
     }
 }

@@ -39,14 +39,9 @@ namespace WSHospital
 
             Age = (int)dateNow.Subtract(birth).TotalDays/365;
 
-            AGE.Text = Age.ToString();
+            AGE.Text = Age.ToString();                   
 
-            var Phot = user.Photo.Split('.');
-
-            Uri uri = new Uri($@"{AppDomain.CurrentDomain.BaseDirectory}\Assets\{Phot[0]}.png");
-            BitmapImage bitmap = new BitmapImage(uri);
-
-            Img.Source = bitmap;
+            Img.Source = GetBitmap();
 
             if(user.RoleID == 1)
             {
@@ -69,8 +64,16 @@ namespace WSHospital
 
         private void bio_Click(object sender, RoutedEventArgs e)
         {
-            ReceptionBioMaterialWindow RBMW = new ReceptionBioMaterialWindow(user, Age);
+            ReceptionBioMaterialWindow RBMW = new ReceptionBioMaterialWindow(user, Age, GetBitmap());
             RBMW.Show();
+        }
+
+        public BitmapImage GetBitmap()
+        {
+            var Phot = user.Photo.Split('.');
+            Uri uri = new Uri($@"{AppDomain.CurrentDomain.BaseDirectory}\Assets\{Phot[0]}.png");
+            BitmapImage bitmap = new BitmapImage(uri);
+            return bitmap;
         }
     }
 }

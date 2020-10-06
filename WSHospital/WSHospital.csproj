@@ -76,7 +76,6 @@
     <Compile Include="Model\SetService.cs" />
     <Compile Include="Model\sysdiagrams.cs" />
     <Compile Include="Model\Users.cs" />
-    <Compile Include="NewModel\AddPat.cs" />
     <Compile Include="View\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>

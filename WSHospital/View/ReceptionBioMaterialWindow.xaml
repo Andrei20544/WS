@@ -5,34 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WSHospital.View"
         mc:Ignorable="d"
-        Title="ReceptionBioMaterialWindow" Height="720" Width="1280" MaxHeight="1080" MaxWidth="1920" MinHeight="720" MinWidth="1280">
+        Title="ReceptionBioMaterialWindow" Height="720" Width="1280" 
+        MaxHeight="1080" MaxWidth="1920" MinHeight="720" MinWidth="1280">
+    <Window.Resources>
+        <Style x:Key="BordStyle">
+            <Setter Property="ItemsControl.BorderThickness" Value="2"></Setter>
+            <Setter Property="ItemsControl.BorderBrush" Value="#FF77AFD6"></Setter>
+            <Setter Property="ItemsControl.Width" Value="275"></Setter>
+            <Setter Property="ItemsControl.Margin" Value="5"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="41*"></ColumnDefinition>
             <ColumnDefinition Width="91*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="280*"></RowDefinition>
+            <RowDefinition Height="180*"></RowDefinition>
+            <RowDefinition Height="229*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="15" Grid.Row="0">
             <StackPanel>
-                <Label FontSize="25" HorizontalAlignment="Center">User data</Label>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="UName" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="ULName" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="UAge" FontSize="17"></TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="340">
+                    <Image x:Name="Phot" Width="95" Height="95" Margin="0 0 30 0"></Image>
+                    <Label FontSize="25" HorizontalAlignment="Center">User data</Label>
+                </StackPanel>
+                
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" TextAlignment="Center" Name="UName" FontSize="17"></TextBlock>
+                </Border>
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" TextAlignment="Center" Name="ULName" FontSize="17"></TextBlock>
+                </Border>
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" TextAlignment="Center" Name="UAge" FontSize="17"></TextBlock>
+                </Border>
             </StackPanel>
         </Border>
 
-        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="10" Grid.Row="1">
+        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="10" Grid.Row="1" Grid.RowSpan="2">
             <StackPanel>
                 <Label FontSize="25" HorizontalAlignment="Center">Patient data</Label>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PFIO" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="DateOfBirth" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PEMAIL" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PPassportData" FontSize="17"></TextBlock>
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PFIO" FontSize="17"></TextBlock>
+                </Border>
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="DateOfBirth" FontSize="17"></TextBlock>
+                </Border>
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PEMAIL" FontSize="17"></TextBlock>
+                </Border>
+                <Border CornerRadius="10" Style="{StaticResource BordStyle}">
+                    <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PPassportData" FontSize="17"></TextBlock>
+                </Border>
             </StackPanel>
         </Border>
 
@@ -75,16 +102,6 @@
                     <Button Width="150" Height="35" Margin="28 5 5 5" FontSize="15" Click="Button_Click_1">Добавить пациента</Button>
                 </StackPanel>
 
-            </StackPanel>
-        </Border>
-
-        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="15" Grid.Column="0" Grid.Row="2">
-            <StackPanel>
-                <Label FontSize="25" HorizontalAlignment="Center">Service data</Label>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SName" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SPrice" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SPeriod" FontSize="17"></TextBlock>
-                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SMeanD" FontSize="17"></TextBlock>
             </StackPanel>
         </Border>
 

@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WSHospital.NewModel;
 
 namespace WSHospital.View
 {
@@ -25,42 +24,35 @@ namespace WSHospital.View
             InitializeComponent();
         }
 
+        public Patients pat;
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using(ModelDB md = new ModelDB())
             {
-                AddPat addPat = new AddPat
+                try
                 {
-                    Login = null,
-                    Password = null,
+                    pat = new Patients
+                    {
+                        FIO = pFIO.Text,
+                        DateOfBirth = DateTime.Parse(pDateOfBirth.Text),
+                        Email = pEmail.Text,
+                        PassportData = pPassportData.Text,
+                        Phone = int.Parse(pPhone.Text),
+                        InsurancePolicy = int.Parse(pInsPolicy.Text),
+                        TypeOfPolicy = pTypePolicy.Text,
+                        IDCompany = 4
+                    };
 
-                    PFIO = FIO.Text,
-                    PDateOfBirth = DateTime.Parse(DateOfBirth.Text),
-                    PEmail = Email.Text,
-                    PPassportData = PassportData.Text,
-                    PPhone = Phone.Text,
-                    PInsPolicy = int.Parse(InsPolicy.Text),
-                    PTypePolicy = TypePolicy.Text,
+                    md.Patients.Add(pat);
+                    md.SaveChanges();
 
-                    IdComp = 4
-                };
-
-                //var NewPat = from P in md.Patients
-                //             select new
-                //             {
-                //                 pFIO = FIO.Text,
-                //                 pDateOfBirth = DateOfBirth.Text,
-                //                 pEmail = Email.Text,
-                //                 pPassportData = PassportData.Text,
-                //                 pPhone = Phone.Text,
-                //                 pInsPolicy = InsPolicy.Text,
-                //                 pTypePolicy = TypePolicy.Text,
-                //                 pIdCompany = 4
-                //             };
-
-                md.Entry(NewPat).State = System.Data.Entity.EntityState.Modified;
-                md.Patients.Add(NewPat);
-                md.SaveChanges();
+                    MessageBox.Show("Данные успешно созранены в БД");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Что-то пошло не так!");
+                }
 
             }
         }
