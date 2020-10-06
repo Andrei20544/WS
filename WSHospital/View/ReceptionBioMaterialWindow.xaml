@@ -1,0 +1,65 @@
+﻿<Window x:Class="WSHospital.View.ReceptionBioMaterialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WSHospital.View"
+        mc:Ignorable="d"
+        Title="ReceptionBioMaterialWindow" Height="720" Width="1280">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="41*"></ColumnDefinition>
+            <ColumnDefinition Width="91*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="15" Grid.Row="0">
+            <StackPanel>
+                <Label FontSize="25" HorizontalAlignment="Center">User data</Label>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="UName" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="ULName" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="UAge" FontSize="17"></TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="10" Grid.Row="1">
+            <StackPanel>
+                <Label FontSize="25" HorizontalAlignment="Center">Patient data</Label>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="PFIO" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="DateOfBirth" FontSize="17"></TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="15" Grid.Column="1" Grid.RowSpan="3">
+            <StackPanel Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Center">
+                <Label FontSize="30" HorizontalAlignment="Center">Заказ</Label>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label FontSize="19" Width="160">BioCode</Label>
+                    <TextBox Width="220" Name="BioCode" TextAlignment="Center" SelectionChanged="BioCode_SelectionChanged"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label FontSize="19" Width="160" Name="PatientPassport">FIO</Label>
+                    <TextBox Width="220" TextAlignment="Center"></TextBox>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+
+        <Border BorderBrush="#FF8C9AA6" BorderThickness="5" CornerRadius="15" Grid.Column="0" Grid.Row="2">
+            <StackPanel>
+                <Label FontSize="25" HorizontalAlignment="Center">Service data</Label>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SName" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SPrice" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SPeriod" FontSize="17"></TextBlock>
+                <TextBlock Height="30" Margin="5" TextAlignment="Center" Name="SMeanD" FontSize="17"></TextBlock>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
