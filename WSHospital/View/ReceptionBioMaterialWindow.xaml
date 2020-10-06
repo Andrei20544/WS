@@ -40,12 +40,17 @@
 
                 <StackPanel Orientation="Horizontal" Margin="5">
                     <Label FontSize="19" Width="160">BioCode</Label>
-                    <TextBox Width="220" Name="BioCode" TextAlignment="Center" SelectionChanged="BioCode_SelectionChanged"/>
+                    <TextBox Width="220" Name="BioCode" TextAlignment="Center"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="5">
-                    <Label FontSize="19" Width="160" Name="PatientPassport">FIO</Label>
-                    <TextBox Width="220" TextAlignment="Center"></TextBox>
+                    <Label FontSize="19" Width="160">FIO</Label>
+                    <ComboBox Name="ComboFIO" Width="220" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label FontSize="19" Width="160">ServiceName</Label>
+                    <TextBox Width="220" TextAlignment="Center" Name="ServiceName"></TextBox>
                 </StackPanel>
 
             </StackPanel>
